@@ -1,0 +1,121 @@
+<div class="container profile-container">
+  <header class="profile-header">
+    <h3>
+      <strong>{{ newUsername || 'User' }}</strong> Profile
+    </h3>
+  </header>
+
+  <div class="profile-details">
+    <!-- Username -->
+    <div class="profile-row">
+      <strong>Username:</strong>
+      <span *ngIf="!editMode['username']">{{ originalUser.username }}</span>
+      <input *ngIf="editMode['username']" [(ngModel)]="newUsername" placeholder="Enter Username" />
+      <img src="assets/images/edit.jpg" alt="Edit" class="edit-icon" (click)="toggleEdit('username')" />
+    </div>
+
+    <!-- Name -->
+    <div class="profile-row">
+      <strong>Name:</strong>
+      <span *ngIf="!editMode['name']">{{ newName }}</span>
+      <input *ngIf="editMode['name']" [(ngModel)]="newName" placeholder="Enter Name" />
+      <img src="assets/images/edit.jpg" alt="Edit" class="edit-icon" (click)="toggleEdit('name')" />
+      <label>
+        <input type="checkbox" [(ngModel)]="isNamePublic" /> {{ isNamePublic ? 'Public' : 'Private' }}
+      </label>
+    </div>
+
+    <!-- Surname -->
+    <div class="profile-row">
+      <strong>Surname:</strong>
+      <span *ngIf="!editMode['surname']">{{ newSurname }}</span>
+      <input *ngIf="editMode['surname']" [(ngModel)]="newSurname" placeholder="Enter Surname" />
+      <img src="assets/images/edit.jpg" alt="Edit" class="edit-icon" (click)="toggleEdit('surname')" />
+      <label>
+        <input type="checkbox" [(ngModel)]="isSurnamePublic" /> {{ isSurnamePublic ? 'Public' : 'Private' }}
+      </label>
+    </div>
+
+    <!-- Skills Selection Menu -->
+    <div class="profile-row">
+      <strong>Skills:</strong>
+      <div class="skills-list" style="max-height: 150px; overflow-y: auto;">
+        <div *ngFor="let skill of skills">
+          <input type="checkbox" [value]="skill" (change)="onSkillChange($event)" /> {{ skill }}
+        </div>
+      </div>
+      
+
+      <!-- Save Skills Button -->
+      <div class="profile-actions">
+        <button (click)="saveSkills()" class="btn btn-save-skills">Save Skills</button>
+      </div>
+    </div>
+
+
+    <!-- Phone -->
+    <div class="profile-row">
+      <strong>Phone:</strong>
+      <span *ngIf="!editMode['phone']">{{ newPhone }}</span>
+      <input *ngIf="editMode['phone']" [(ngModel)]="newPhone" placeholder="Enter Phone" />
+      <img src="assets/images/edit.jpg" alt="Edit" class="edit-icon" (click)="toggleEdit('phone')" />
+      <label>
+        <input type="checkbox" [(ngModel)]="isPhonePublic" /> {{ isPhonePublic ? 'Public' : 'Private' }}
+      </label>
+    </div>
+
+    <!-- Position -->
+    <div class="profile-row">
+      <strong>Position:</strong>
+      <span *ngIf="!editMode['position']">{{ newPosition }}</span>
+      <input *ngIf="editMode['position']" [(ngModel)]="newPosition" placeholder="Enter Position" />
+      <img src="assets/images/edit.jpg" alt="Edit" class="edit-icon" (click)="toggleEdit('position')" />
+      <label>
+        <input type="checkbox" [(ngModel)]="isPositionPublic" /> {{ isPositionPublic ? 'Public' : 'Private' }}
+      </label>
+    </div>
+
+    <!-- Company -->
+    <div class="profile-row">
+      <strong>Company:</strong>
+      <span *ngIf="!editMode['company']">{{ newCompany }}</span>
+      <input *ngIf="editMode['company']" [(ngModel)]="newCompany" placeholder="Enter Company" />
+      <img src="assets/images/edit.jpg" alt="Edit" class="edit-icon" (click)="toggleEdit('company')" />
+      <label>
+        <input type="checkbox" [(ngModel)]="isCompanyPublic" /> {{ isCompanyPublic ? 'Public' : 'Private' }}
+      </label>
+    </div>
+
+    <!-- Profile Picture -->
+    <div class="profile-row">
+      <strong>Profile Picture:</strong>
+      <img *ngIf="imagePreview" [src]="imagePreview" alt="Profile Photo" class="profile-photo" />
+      <input type="file" (change)="onProfileImageSelected($event)" />
+    </div>
+
+    <!-- CV Upload -->
+    <div class="profile-row">
+      <strong>Uploaded CV:</strong>
+      <span *ngIf="cvTitle; else noCvUploaded">{{ cvTitle }}</span>
+      <ng-template #noCvUploaded>No CV uploaded</ng-template>
+      <img src="assets/images/edit.jpg" alt="Edit" class="edit-icon" (click)="toggleEdit('cv')" />
+      <label>
+        <input type="checkbox" [(ngModel)]="isCvURLPublic" /> {{ isCvURLPublic ? 'Public' : 'Private' }}
+      </label>
+      <input type="file" (change)="onCvFileSelected($event)" accept=".pdf" />
+    </div>
+
+    <!-- Download/View CV -->
+    <div class="profile-actions">
+      <button (click)="downloadCV()" class="btn btn-blue">Download CV</button>
+      <button (click)="viewCV()" class="btn btn-blue">View CV in New Tab</button>
+    </div>
+
+    <!-- Save Button -->
+    <button (click)="saveEdit()" class="btn btn-save">Save All Changes</button>
+  </div>
+</div>
+
+<ng-template #loggedOut>
+  Please login.
+</ng-template>

@@ -1,0 +1,126 @@
+.notifications-container, .friend-request-card {
+  background-color: #f0f8ff; /* Light blue background for the container */
+  border: 1px solid #d0e4ff; /* Soft border color */
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+  font-size: 1.5rem;
+  color: #0056b3; /* Dark blue title color */
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.notifications-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.notification-box {
+  background-color: #e0f7fa; /* Light teal background for notifications */
+  border-radius: 8px;
+  padding: 15px;
+  width: 100%;
+  max-width: 300px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.notification-box.read {
+  background-color: #d4edda; /* Light green for read notifications */
+}
+
+.notification-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.notification-message {
+  font-size: 1rem;
+  color: #333; /* Dark gray text color */
+  margin: 0;
+}
+
+.notification-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: none;
+  color: white;
+}
+
+.btn-mark-read {
+  background-color: #007bff; /* Bright blue */
+}
+
+.btn-mark-read:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.btn-delete {
+  background-color: #dc3545; /* Red for delete */
+}
+
+.btn-delete:hover {
+  background-color: #c82333; /* Darker red on hover */
+}
+
+.friend-request-card {
+  background-color: #f9f9f9; /* Light gray background for friend requests */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #d0e4ff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.friend-request-info h5 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #007bff; /* Bright blue for names */
+}
+
+.request-label {
+  font-size: 0.85rem;
+  color: #6c757d; /* Muted gray for labels */
+}
+
+.friend-request-actions .btn {
+  margin-left: 10px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+}
+
+.btn-accept {
+  background-color: #28a745; /* Green for accept */
+}
+
+.btn-accept:hover {
+  background-color: #218838; /* Darker green on hover */
+}
+
+.btn-reject {
+  background-color: #dc3545; /* Red for reject */
+}
+
+.btn-reject:hover {
+  background-color: #c82333; /* Darker red on hover */
+}

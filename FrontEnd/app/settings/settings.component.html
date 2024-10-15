@@ -1,0 +1,35 @@
+<div class="container profile-container" *ngIf="originalUser; else loggedOut" style="background-color: #f8f9fa; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+  
+  <!-- Email Section -->
+  <div class="profile-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+    <div style="flex: 1;">
+      <strong>Email:</strong>
+      <span *ngIf="!editMode['email']">{{ originalUser.email }}</span>
+      <input *ngIf="editMode['email']" [(ngModel)]="newEmail" placeholder="Enter new email" style="padding: 8px; border-radius: 5px; border: 1px solid #ccc; width: 100%;" />
+    </div>
+    <img src="assets/images/edit.jpg" alt="Edit" class="edit-icon" style="cursor: pointer; width: 20px; height: 20px;" (click)="toggleEdit('email')" />
+  </div>
+
+  <!-- New Password Section -->
+  <div class="profile-row" style="margin-bottom: 15px;">
+    <strong>New Password:</strong>
+    <input type="password" [(ngModel)]="newPassword" placeholder="New Password" style="padding: 8px; border-radius: 5px; border: 1px solid #ccc; width: 100%;" />
+  </div>
+
+  <!-- Confirm Password Section -->
+  <div class="profile-row" style="margin-bottom: 15px;">
+    <strong>Confirm Password:</strong>
+    <input type="password" [(ngModel)]="confirmPassword" placeholder="Confirm Password" style="padding: 8px; border-radius: 5px; border: 1px solid #ccc; width: 100%;" />
+    <span *ngIf="passwordError" style="color: #dc3545; font-size: 12px;">Passwords do not match!</span>
+  </div>
+
+  <!-- Save Button -->
+  <button (click)="saveEdit()" style="background-color: #007bff; color: white; padding: 10px 20px; border-radius: 5px; border: none; cursor: pointer;">
+    Save All Changes
+  </button>
+  
+</div>
+
+<ng-template #loggedOut>
+  <p>Please login.</p>
+</ng-template>

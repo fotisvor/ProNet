@@ -1,0 +1,28 @@
+<!-- Notifications Section -->
+<div *ngIf="notifications && notifications.length > 0" class="notifications-container" style="background-color: #f0f8ff; border: 1px solid #d0e4ff; border-radius: 10px; padding: 20px; margin-bottom: 20px;">
+  <h4 style="color: #0056b3;">Notifications</h4>
+  <ul class="notifications-list" style="display: flex; flex-wrap: wrap; gap: 20px;">
+    <li *ngFor="let notification of notifications" [class.read]="notification.read" style="background-color: #e0f7fa; padding: 15px; border-radius: 8px; width: 100%; max-width: 300px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+      <div class="notification-content" style="display: flex; justify-content: space-between; align-items: center;">
+        <span class="notification-message" style="color: #333;">{{ notification.message }}</span>
+        <div class="notification-actions">
+          <button (click)="markAsRead(notification.id)" style="background-color: #007bff; border: none; border-radius: 5px; color: white; padding: 8px 12px; cursor: pointer;">Mark as read</button>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<!-- Friend Requests Section -->
+<div *ngFor="let request of requests" class="friend-request-card" style="background-color: #f9f9f9; border: 1px solid #d0e4ff; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+  <div class="friend-request-content" style="display: flex; justify-content: space-between; align-items: center;">
+    <div class="friend-request-info">
+      <h5 style="color: #007bff;">{{ request.fromUser }}</h5>
+      <small style="color: #6c757d;">Friend Request</small>
+    </div>
+    <div class="friend-request-actions">
+      <button (click)="acceptFriendRequest(request.id)" style="background-color: #28a745; border: none; border-radius: 5px; color: white; padding: 8px 12px; cursor: pointer;">Accept</button>
+      <button (click)="rejectFriendRequest(request.id)" style="background-color: #dc3545; border: none; border-radius: 5px; color: white; padding: 8px 12px; cursor: pointer; margin-left: 10px;">Reject</button>
+    </div>
+  </div>
+</div>

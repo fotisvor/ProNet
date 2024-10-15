@@ -1,0 +1,61 @@
+<header class="jumbotron">
+  <h3>
+    <strong>{{ user.username }}</strong> Profile
+  </h3>
+</header>
+
+<!-- Username -->
+<p >
+  <strong>Username:</strong>
+  <span>{{ user.username }}</span>
+</p>
+
+<!-- Email -->
+<p *ngIf="this.isEmailPublic">
+  <strong>Email:</strong>
+  <span>{{ user.email }}</span>
+</p>
+
+<!-- Name -->
+<p *ngIf="this.isNamePublic">
+  <strong>Name:</strong>
+  <span>{{ user.name }}</span>
+</p>
+
+<!-- Surname -->
+<p *ngIf="this.isSurnamePublic">
+  <strong>Surname:</strong>
+  <span>{{ user.surname }}</span>
+</p>
+
+<!-- Phone -->
+<p *ngIf="this.isPhonePublic">
+  <strong>Phone:</strong>
+  <span>{{ user.phone }}</span>
+</p>
+
+<p *ngIf="this.isPositionPublic">
+  <strong>Position:</strong>
+  <span>{{ user.position }}</span>
+</p>
+
+<p *ngIf="this.isCompanyPublic">
+  <strong>Company:</strong>
+  <span>{{ user.company }}</span>
+</p>
+
+
+
+<!-- Download CV -->
+<p>
+  <strong>Download CV:</strong>
+  <button (click)="downloadCV()">Download CV</button>
+</p>
+
+<!-- View CV in new tab -->
+<p>
+  <strong>View CV:</strong>
+  <button (click)="viewCV()">View CV in New Tab</button>
+</p>
+
+

@@ -1,0 +1,26 @@
+
+<div class="container">
+  <h2>User Management</h2>
+  <button (click)="exportUsers('json')">Export to JSON</button>
+  <button (click)="exportUsers('xml')">Export to XML</button>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Select</th>
+        <th>Username</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>
+          <input type="checkbox" (change)="toggleUserSelection(user.id)">
+        </td>
+        <a [routerLink]="['/admin/users', user.id]">{{ user.username }}</a>
+        
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-primary" (click)="exportSelectedUsers('json')" [disabled]="isLoading">Export Selected to JSON</button>
+  <button class="btn btn-secondary" (click)="exportSelectedUsers('xml')" [disabled]="isLoading">Export Selected to XML</button>
+
+</div>

@@ -1,0 +1,14 @@
+<h1>Chat with {{ friendUsername }}</h1>
+
+<!-- Display messages -->
+<div *ngFor="let msg of messages">
+    <p><strong>{{ msg.sender }}:</strong> {{ msg.message }}</p>
+</div>
+
+<form (ngSubmit)="onSubmit()" #messageForm="ngForm">
+    <div>
+      <label for="message">Message:</label>
+      <input type="text" id="message" [(ngModel)]="messageContent" name="messageContent" required>
+    </div>
+    <button type="submit">Send</button>
+  </form>

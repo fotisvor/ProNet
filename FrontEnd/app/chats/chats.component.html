@@ -1,0 +1,11 @@
+<div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Friends</h5>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let friend of friends">
+          <span>{{ friend.username }}</span>
+          <button class="btn btn-sm btn-primary" (click)="StartChat(friend.username)">Chat</button>
+        </li>
+      </ul>
+    </div>
+  </div>

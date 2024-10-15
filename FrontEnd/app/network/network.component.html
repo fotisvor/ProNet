@@ -1,0 +1,43 @@
+<div class="network-container">
+  <h2>Your Network</h2>
+    <input 
+    type="text" 
+    placeholder="Search for professionals..." 
+    [(ngModel)]="searchText" 
+    (keydown.enter)="onSearch()" />
+    <div style="margin-bottom: 20px;"></div>
+
+  <h3>Connected Users</h3>
+    <div class="friend-grid">
+    <div *ngFor="let friend of friends" class="friend-item">
+      <img *ngIf="friend.profilePhotoUrl" [src]="friend.profilePhotoUrl" alt="{{ friend.username }}'s profile photo" class="friend-photo">
+      <div class="friend-details">
+        <h3>{{ friend.username }}</h3>
+        <p>{{ friend.position }} at {{ friend.company }}</p>
+      </div>
+      <div class="friend-actions">
+        <a [routerLink]="['/viewprofile', friend.username]" class="applicant-link">View Profile</a>
+        <button class="chat-button" (click)="startChat(friend.username)">Chat</button>
+      </div>
+    </div>
+  </div>
+
+  <h3>Search Results</h3>
+<div class="friend-grid">
+  <div *ngFor="let user of searchResults" class="friend-item">
+    <img *ngIf="user.profilePhotoUrl" [src]="user.profilePhotoUrl" alt="{{ user.username }}'s profile photo" class="friend-photo">
+    <div class="friend-details">
+      <h3>{{ user.username }}</h3>
+      <p>{{ user.position }} at {{ user.company }}</p>
+    </div>
+    <div class="friend-actions">
+      <!-- Check if the user is already a friend -->
+      <ng-container *ngIf="isFriend(user.username); else notFriend">
+        <button class="chat-button" (click)="startChat(user.username)">Chat</button>
+      </ng-container>
+      <ng-template #notFriend>
+        <button class="friend-request-button" (click)="sendFriendRequest(user.username)">Send Friend Request</button>
+      </ng-template>
+    </div>
+  </div>
+</div>

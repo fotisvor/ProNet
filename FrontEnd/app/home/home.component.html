@@ -1,0 +1,86 @@
+<div class="container mt-4">
+  <div class="row">
+    <!-- Left Column: Profile Details and Friends List -->
+    <div class="col-md-4" *ngIf="isLoggedIn">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h5 class="card-title">Profile Details</h5>
+          <p><strong>Username:</strong> <span>{{ user.username }}</span></p>
+          <p><strong>Email:</strong> <span>{{ user.email }}</span></p>
+          <p><strong>Name:</strong> <span>{{ user.name }}</span></p>
+          <p><strong>Surname:</strong> <span>{{ user.surname }}</span></p>
+          <p><strong>Phone:</strong> <span>{{ user.phone }}</span></p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Friends</h5>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let friend of friends">
+              <span>{{ friend.username }}</span>
+              <button class="btn btn-sm btn-primary" (click)="StartChat(friend.username)">Chat</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column: Post Creation and Posts Display -->
+    <div class="col-md-8">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h5 class="card-title">Create Post</h5>
+          <form (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+            <div class="form-group mb-3">
+              <label for="content">Content</label>
+              <textarea class="form-control" id="content" [(ngModel)]="form.content" name="content" required></textarea>
+            </div>
+
+            <!-- Image Upload Field -->
+            <div class="form-group mb-3">
+              <label for="file">Upload Image</label>
+              <input type="file" class="form-control" id="file" (change)="onFileSelected($event)" />
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Create Post</button>
+          </form>
+
+          <div *ngIf="isSuccessful" class="alert alert-success mt-3">
+            Post created successfully!
+          </div>
+          <div *ngIf="isLoginFailed" class="alert alert-danger mt-3">
+            {{ errorMessage }}
+          </div>
+        </div>
+      </div>
+
+        <!-- Posts Display -->
+        <div *ngFor="let post of posts" class="card mb-4">
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">{{ post.username }}</h5>
+            <small class="text-custom">{{ post.createdAt | date:'short' }}</small> 
+          </div>
+          <div class="card-body">
+            <p>{{ post.post }}</p>
+            <img *ngIf="post.imagePreview" [src]="post.imagePreview"  alt="Post image">
+          </div>
+          <div class="card-footer d-flex justify-content-between align-items-center">
+            <span>{{ post.likecounter }} Likes</span>
+            <div>
+              <button class="btn btn-sm btn-outline-primary me-2" (click)="like(post.id)">Like</button>
+              <input type="text" [(ngModel)]="commentContent[post.id]" placeholder="Add a comment..." class="form-control form-control-sm d-inline-block w-75">
+              <button class="btn btn-sm btn-primary" (click)="comment(post.id, commentContent[post.id])">Comment</button>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div *ngFor="let comment of post.comments">
+              <p class="mb-1"><strong>{{ comment.username }}:</strong> {{ comment.content }}</p>
+            </div>
+          </div>
+        </div>
+
+
+    </div>
+  </div>
+</div>

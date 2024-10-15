@@ -1,0 +1,80 @@
+.friend-photo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+
+  .network-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  /* Grid layout for friends */
+  .friend-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; 
+  }
+  
+  /* Each friend item is a row */
+  .friend-item {
+    display: flex;
+    align-items: center;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd; 
+    border-radius: 10px; 
+    padding: 15px;
+  }
+  
+  /* Profile photo styling */
+  .friend-photo {
+    width: 60px;
+    height: 60px; 
+    object-fit: cover; 
+    border-radius: 50%; 
+    margin-right: 15px; 
+  }
+  
+  /* Friend details styling */
+  .friend-details {
+    flex-grow: 1;
+    margin-right: 20px; 
+  }
+  
+  .friend-details h3 {
+    margin: 0;
+    font-size: 1.2em;
+    color: #333;
+  }
+  
+  .friend-details p {
+    margin: 0;
+    font-size: 1em;
+    color: #666;
+  }
+  
+  /* Friend actions styling */
+  .friend-actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  /* Profile link styling */
+  .profile-link {
+    display: inline-block;
+    margin-top: 5px;
+    color: #0b0b0b;
+    text-decoration: none;
+  }
+  
+  /* Chat button styling */
+  .chat-button {
+    padding: 10px 12px;
+    background-color: #5e6062;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }

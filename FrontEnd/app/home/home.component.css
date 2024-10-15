@@ -1,0 +1,129 @@
+/* General Container Styles */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Profile Details Card */
+  .profile-details p {
+    margin-bottom: 10px;
+    font-size: 1rem;
+    color: #333;
+  }
+  
+  /* Friends List */
+  .friends-list {
+    margin-top: 20px;
+  }
+  
+  .friends-list .card-title {
+    margin-bottom: 15px;
+    font-size: 1.25rem;
+  }
+  
+  .friends-list .list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    font-size: 0.95rem;
+    background-color: #f8f9fa;
+    border: none;
+    border-bottom: 1px solid #dee2e6;
+  }
+  
+  .friends-list .list-group-item:last-child {
+    border-bottom: none;
+  }
+  
+  /* Post Creation Form */
+  .card-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #007bff;
+  }
+  
+  .form-control {
+    font-size: 0.95rem;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  /* Posts Display */
+  .card-header {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .card-header h5 {
+    margin: 0;
+  }
+  
+  .card-header small {
+    color: #f1f1f1;
+  }
+  
+  .card-body p {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  .card-footer {
+    background-color: #f8f9fa;
+  }
+  
+  .card-footer span {
+    font-size: 0.9rem;
+    color: #333;
+  }
+  
+  .card-footer button {
+    font-size: 0.9rem;
+  }
+  
+  .card-footer .form-control-sm {
+    font-size: 0.85rem;
+  }
+  
+  /* Image Styling */
+  .card-body img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+  
+  /* Alerts */
+  .alert {
+    margin-top: 15px;
+    font-size: 0.9rem;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .row {
+      flex-direction: column;
+    }
+  
+    .col-md-4,
+    .col-md-8 {
+      width: 100%;
+    }
+  
+    .friends-list .list-group-item {
+      font-size: 0.85rem;
+    }
+  
+    .form-control,
+    .form-control-sm {
+      width: 100%;
+    }
+    .text-custom {
+      font-size: 0.85rem;
+      color: #ffffff !important; /* Light gray */
+     
+    }
+  }
+  

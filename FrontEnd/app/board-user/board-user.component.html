@@ -1,0 +1,50 @@
+<div class="container" *ngIf="currentUser;">
+  <form (ngSubmit)="onSubmit()"  enctype="multipart/form-data">
+    
+    <div class="form-group">
+      <label for="content">Content</label>
+      <textarea class="form-control" id="content" [(ngModel)]="form.content" name="content" required></textarea>
+    </div>
+
+    <!-- Image Upload Field -->
+    <div class="form-group">
+      <label for="file">Upload Image</label>
+      <input type="file" class="form-control" id="file" (change)="onFileSelected($event)" />
+    </div>
+    <button type="submit" class="btn btn-primary btn-block">Create Post</button>
+  </form>
+
+  <div *ngIf="isSuccessful" class="alert alert-success">
+    Post created successfully!
+  </div>
+  <div *ngIf="isSignUpFailed" class="alert alert-danger">
+    {{ errorMessage }}
+  </div> 
+
+  <p>{{content}}</p>
+  <div *ngFor="let user of other_users">
+    <p>{{ user.username }}
+      <button (click)="sendFriendRequest(user.username)">Add Friend</button>
+    </p>
+  </div>
+
+  <div *ngFor="let request of requests">
+    <p>{{ request.fromUser }}
+      <button (click)="acceptFriendRequest(request.id)">Accept</button>
+      <button (click)="rejectFriendRequest(request.id)">Reject</button>
+    </p>
+  </div>
+  <p>Friends</p>
+  
+  <div *ngFor="let friend of friends">
+    <p>{{ friend.username }}
+    <button (click)="StartChat(friend.username)">Chat</button>
+    </p>
+  </div>
+
+  <p>
+    <button (click)="Jobs()">Jobs</button>
+  </p>
+  
+
+

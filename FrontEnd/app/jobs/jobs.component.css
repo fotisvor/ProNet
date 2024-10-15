@@ -1,0 +1,31 @@
+.card {
+    border: none;
+    border-radius: 0.5rem;
+  }
+  
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  
+  .card-footer {
+    background-color: transparent;
+  }
+  
+  .btn-outline-primary {
+    border-radius: 0.25rem;
+  }
+  
+  .alert-success {
+    text-align: center;
+  }
+
+  .skills-list {
+    max-height: 150px; 
+    overflow-y: auto; /* Enables vertical scrolling */
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 4px;
+  }
+  
+  

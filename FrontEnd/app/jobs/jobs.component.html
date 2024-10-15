@@ -1,0 +1,91 @@
+<div class="container mt-4">
+  <div class="row">
+    <!-- Job Creation Form -->
+    <div class="col-md-6 mb-4">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h4 class="card-title text-center mb-4">Create Job Offer</h4>
+          <form (ngSubmit)="onSubmit()">
+            <div class="form-group mb-3">
+              <label for="Title">Title</label>
+              <input type="text" class="form-control" id="Title" [(ngModel)]="form.Title" name="Title" required />
+            </div>
+            <div class="form-group mb-3">
+              <label for="Description">Job Description</label>
+              <textarea
+                class="form-control"
+                id="Description"
+                [(ngModel)]="form.Description"
+                name="Description"
+                rows="4"
+                required
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <label>Select Required Skills</label>
+              <div class="skills-list" style="max-height: 150px; overflow-y: auto;">
+                <div *ngFor="let skill of skills">
+                  <input type="checkbox" [value]="skill" (change)="onSkillChange($event)" /> {{ skill }}
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Create Job Offer</button>
+          </form>
+          <div *ngIf="isSuccessful" class="alert alert-success mt-3">
+            Job created successfully!
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- User Jobs -->
+    <div class="col-md-6 mb-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-body" style="max-height: 450px; overflow-y: auto;"> <!-- Set max-height to match the form -->
+          <h4 class="card-title text-center mb-4">Your Jobs</h4>
+          <div *ngFor="let job of userJobs" class="mb-4">
+            <h5 class="card-title">{{ job.title }}</h5>
+            <p class="card-text">{{ job.description }}</p>
+            <p class="text-secondary" *ngIf="job.skills && job.skills.length">
+              <strong>Skills Required:</strong> {{ getSkillNames(job) }}
+            </p>
+            <p class="text-secondary"><strong>Employer:</strong> {{ job.employer }}</p>
+
+             <!-- Scrollable List for Applicants -->
+            <div *ngIf="job.applicants && job.applicants.length > 0" style="max-height: 150px; overflow-y: auto; border: 1px solid #ddd; padding: 10px;">
+              <label>Applicants:</label>
+              <div *ngFor="let applicant of job.applicants">
+                <a [routerLink]="['/viewprofile', applicant.username]" class="applicant-link">{{ applicant.username }}</a>
+              </div>  
+            </div>
+            <div *ngIf="!job.applicants || job.applicants.length === 0">
+              <p>No applicants yet.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Job Listings -->
+  <div class="row">
+    <div class="col-12">
+      <h4 class="mb-4">Jobs</h4>
+    </div>
+    <div *ngFor="let job of jobs" class="col-md-6 col-lg-4 mb-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <h5 class="card-title">{{ job.title }}</h5>
+          <p class="card-text">{{ job.description }}</p>
+          <p class="text-secondary" *ngIf="job.skills && job.skills.length">
+            <strong>Skills Required:</strong> {{ getSkillNames(job) }}
+          </p>
+          <p class="text-secondary"><strong>Employer:</strong> {{ job.employer }}</p>
+        </div>
+        <div class="card-footer text-end">
+          <button class="btn btn-sm btn-outline-primary" (click)="applyJob(job.id)">Apply</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
